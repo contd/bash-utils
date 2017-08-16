@@ -5,9 +5,10 @@
 #
 function check_uninstalled
 {
-    __BINS_TO_CHECK=(awk colordiff convert curl docker ffmpeg gifsicle gpg2 HandBrakeCLI jq nmap openssl pandoc pdftohtml rename rsync unzip wget xsel)
+    __BINS_TO_CHECK=(awk colordiff convert curl docker ffmpeg gifsicle gpg2 HandBrakeCLI jq nmap openssl pandoc pdftohtml rename rsync unzip wget xsel youtube-dl)
     __NPMS_TO_CHECK=(tidy-markdown thumbsup webshot)
-    __PIPS_TO_CHECK=(image-scraper youtube-dl)
+		# To check if need: pip install ImageScraper
+    __PIPS_TO_CHECK=(image-scraper)
 
     echo "Checking for bins needed..."
 
@@ -17,11 +18,12 @@ function check_uninstalled
 
         if [ "${__BIN_PATH}" == "" ]
         then
-            ansi --red "ERROR: $B missing"
-            ansi --yellow " - To install, run: sudo apt install $B"
-            echo ""
+            ansi --red "MISSING: "; ansi --yellow "$B"
+						ansi --blue " (To install, run: "; ansi --green "sudo apt install $B"; ansi --blue " )"
+						echo ""
         else
-            ansi --green --newline "$B - is installed!"
+            ansi --green "$B"; ansi --blue " - is installed!"
+						echo ""
         fi
     done
 
@@ -34,11 +36,12 @@ function check_uninstalled
 
         if [ "${__NPM_PATH}" == "" ]
         then
-            ansi --red "ERROR: $N missing"
-            ansi --yellow " - To install, run: sudo npm install -g $N"
-            echo ""
+            ansi --red "MISSING: "; ansi --yellow "$N"
+						ansi --blue " (To install, run: "; ansi --green "sudo npm install -g $N"; ansi --blue " )"
+						echo ""
         else
-            ansi --green --newline "npm: $N - is installed!"
+            ansi --green "npm: $N"; ansi --blue " - is installed!"
+						echo ""
         fi
     done
 }

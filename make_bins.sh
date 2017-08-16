@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
 for i in $HOME/bin/*;do
-  rm $i;
+  if [ ! -z $i ];then rm $i; fi
 done
 
 LINKPATH=`pwd`
-
 ln -s $LINKPATH/utils/ansi.sh $HOME/bin/ansi
-
 # First Check if all dependencies are installed
 source $LINKPATH/libs/check_uninstalled.sh
 check_uninstalled
@@ -21,12 +19,14 @@ for i in $LINKPATH/funcs/*;do
 done
 # Utilities next
 for i in $LINKPATH/utils/*;do
+  if [ ! -d "$i" ];then
     fname=$(basename $i)
     bname=${fname%.*}
     if [ "$bname" != "ansi" ];then
         ansi --green --newline "ln -s $i ~/bin/${bname}"
         ln -s $i ~/bin/$bname
     fi
+  fi
 done
 
 for i in $LINKPATH/docs/*;do
