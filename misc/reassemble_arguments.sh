@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-## Reassemble arguments (support-most-cases implementation)
-## Author: Przemyslaw Pawelczyk
-
 ARGC=$#
 argcon=
 argkey=
