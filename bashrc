@@ -71,7 +71,8 @@ export CLICOLOR=true
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 ## Powerline
-. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh 
+#. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh 
+. /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
 
 ## Anything after this was added by something else and should be looked into immediatly!!
 
