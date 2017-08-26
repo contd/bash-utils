@@ -5,7 +5,7 @@
 #
 function geturl
 {
-    source $HOME/bash-utils/libs/token.sh
+    source $HOME/bash-utils/libs/tokens.sh
     __url_in=$1
     __url_pre='https://mercury.postlight.com/parser?url='
     __url_comb="${__url_pre}${__url_in}"
