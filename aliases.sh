@@ -15,6 +15,7 @@ case "$myos" in
     alias ls="command ls ${colorflag}"
 		alias gpg='gpg2'
 		alias open="xdg-open"
+		alias drive="drive-google"
 		#alias wkhtmltoimage="export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb && xvfb-run -a -e /tmp/wkhtmltoimage-xvfb-run.log wkhtmltoimage"
 		;;
   *) ;;
