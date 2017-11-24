@@ -9,10 +9,10 @@ else
 	VEXT="${bid##*.}"
 	YTID=${bid%.*}
 
-	ansii --yellow --newline "==================================================================================="
-	ansii --green --newline "Downloading ${VURL}"
-	ansii --green --newline " [Id: ${id} | Bid: ${bid} | Ext: ${VEXT} | YTID: ${YTID} ]"
-	ansii --yellow --newline "==================================================================================="
+	ansi --yellow --newline "==================================================================================="
+	ansi --green --newline  "Downloading ${VURL}"
+	ansi --green --newline  " [Id: ${id} | Bid: ${bid} | Ext: ${VEXT} | YTID: ${YTID} ]"
+	ansi --yellow --newline "==================================================================================="
 
   youtube-dl --restrict-filenames --write-thumb --write-sub $VURL
 

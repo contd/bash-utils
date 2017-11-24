@@ -70,6 +70,17 @@ export TERM="xterm-256color"
 export CLICOLOR=true
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+## Cuda cudnn
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64/
+
+## Pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+## Cargo (Rust)
+export PATH="$HOME/.cargo/bin:$PATH"
+
 ## Powerline
 #. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh 
 #. /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh

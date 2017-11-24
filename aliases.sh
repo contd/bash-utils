@@ -16,6 +16,7 @@ case "$myos" in
 		alias gpg='gpg2'
 		alias open="xdg-open"
 		alias drive="drive-google"
+		alias chrome="google-chrome"
 		#alias wkhtmltoimage="export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb && xvfb-run -a -e /tmp/wkhtmltoimage-xvfb-run.log wkhtmltoimage"
 		;;
   *) ;;
@@ -51,6 +52,10 @@ alias df='dfc'
 alias rasync='rsync -az --info=progress2'
 #alias atom='tmpin atom'
 alias gda='git diff | tmpin atom'
+
+# Senseye dev
+alias figit="docker-compose build && docker-compose up"
+alias dka='docker kill $(docker ps -q)'
 
 case "$myos" in
   Darwin)
