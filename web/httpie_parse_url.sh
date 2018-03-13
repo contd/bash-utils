@@ -54,8 +54,8 @@ function proc_url
 	echo "</body></html>" >> "$__html_fn"
 
 	#pandoc --ascii --smart --atx-headers -f html "$__html_fn" -t markdown_strict -o "$__md_fn"
-	pandoc --ascii --smart --atx-headers -f html "$__html_fn" -t markdown_github -o "$__md_fn"
-	pandoc --ascii --smart -f html "$__html_fn" -t plain -o "$__txt_fn"
+	pandoc --wrap=none --ascii --smart --atx-headers -f html "$__html_fn" -t markdown_github -o "$__md_fn"
+	pandoc --wrap=none --ascii --smart -f html "$__html_fn" -t plain -o "$__txt_fn"
 
 	if [ tidy-markdown < "$__md_fn" > "$__tidy_md_fn" ];then
 	  tidy-markdown < "$__md_fn" > "$__tidy_md_fn"

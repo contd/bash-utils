@@ -13,7 +13,6 @@ case "$myos" in
     export MONO_GAC_PREFIX="/usr/local"
 		export BASHCOMPL="/usr/local/etc/bash_completion"
     export PYENV_ROOT=""
-    export LINUX_BREW_HOME=""
     export PERLBREW_HOME="$HOME/perl5/perlbrew"
     export NVM_DIR="$HOME/.nvm"
     export GOPATH="$HOME/go"
@@ -38,16 +37,19 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 if [ -f "$HOME/.bash/aliases.sh" ]; then source "$HOME/.bash/aliases.sh"; fi
 ## Bash Functions
 if [ -f "$HOME/.bash/functions.sh" ]; then source "$HOME/.bash/functions.sh"; fi
+## Development Extras
+if [ -f "$HOME/.bash/devsetup.sh" ]; then source "$HOME/.bash/devsetup.sh"; fi
 ## Bash Completion
 if [ -f "$BASHCOMPL" ]; then source "$BASHCOMPL"; fi
 
 ## Perlbrew
-PATH="$PERLBREW_HOME/perls/current/bin:$PATH"
 if [ -f "$PERLBREW_HOME/etc/bashrc" ]; then
+	PATH="$PERLBREW_HOME/perls/current/bin:$PATH"
   source "$PERLBREW_HOME/etc/bashrc"
 fi
 ## Go lang
-PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+if [ -d "$GOROOT" ]; then PATH="$PATH:$GOROOT/bin"; fi
+if [ -d "$GOPATH" ]; then PATH="$PATH:$GOPATH/bin"; fi
 
 ## NVM for NodeJS
 export NVM_DIR="$HOME/.nvm"
@@ -62,6 +64,16 @@ if [ "$myos" == "Linux" ]; then
   if [ -s "$RVM_DIR/scripts/rvm" ];then source "$RVM_DIR/scripts/rvm"; fi
 fi
 
+## Pyenv
+if [ -d "$HOME/.pyenv" ];then
+	PATH="$HOME/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
+## Cargo (Rust)
+if [ -d "$HOME/.cargo" ]; then PATH="$HOME/.cargo/bin:$PATH"; fi
+
 ## Home bin
 PATH="$HOME/bin:$PATH"
 
@@ -69,22 +81,14 @@ export PATH="$PATH"
 export TERM="xterm-256color"
 export CLICOLOR=true
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export LS_COLORS='di=94:fi=93:ln=32:pi=5:so=1;35;41:bd=1;33;40:cd=1;36;44:or=31:mi=91:ex=31:*.deb=96'
 
 ## Cuda cudnn
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64/
-
-## Pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-## Cargo (Rust)
-export PATH="$HOME/.cargo/bin:$PATH"
+if [ -d /usr/local/cuda/lib64 ]; then export LD_LIBRARY_PATH=/usr/local/cuda/lib64/; fi
 
 ## Powerline
-#. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh 
-#. /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-. /usr/share/powerline/bindings/bash/powerline.sh
+PWRLINE="/usr/share/powerline/bindings/bash/powerline.sh"
+if [ -f "$PWRLINE" ]; then . $PWRLINE; fi 
 
 ## Anything after this was added by something else and should be looked into immediatly!!
 

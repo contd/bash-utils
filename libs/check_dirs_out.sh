@@ -9,4 +9,5 @@ function check_dirs_out
   if [ ! -d "${__filepath}/png" ];then mkdir -p $__filepath/png; fi
   if [ ! -d "${__filepath}/html" ];then mkdir "${__filepath}/html"; fi
   if [ ! -d "${__filepath}/json" ];then mkdir "${__filepath}/json"; fi
+  if [ ! -d "${__filepath}/txt" ];then mkdir "${__filepath}/txt"; fi
 }

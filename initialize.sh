@@ -2,18 +2,6 @@
 
 LINK_PATH=`pwd`
 
-# Used
-function makeLinks {
-	BPATH=$1
-	SPATH=$2
-
-  if [ -L "$HOME/bin/$BPATH" ];then
-		rm $HOME/bin/$BPATH
-  fi
-	ansi $3 --newline "ln -s $SPATH $HOME/bin/$BPATH"
-  ln -s $SPATH $HOME/bin/$BPATH
-}
-
 # Make sure .bash is present
 if [ ! -L "$HOME/.bash" ];then
 	ln -s $HOME/bash-utils $HOME/.bash
@@ -29,38 +17,8 @@ for _HFILE in bashrc bash_profile bash_logout;do
 	fi
 done
 
-# Make sure ~/bin is present
-if [ ! -d "$HOME/bin" ];then
-	mkdir $HOME/bin
-fi
-
-# Utils
-for i in $LINK_PATH/utils/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-	makeLinks $bname $i "--green"
-done
-
-# Docs
-for i in $LINKPATH/docs/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-  makeLinks $bname $i "--yellow"
-done
-
-# Media
-for i in $LINKPATH/media/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-  makeLinks $bname $i "--blue"
-done
-
-# Web
-for i in $LINKPATH/web/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-  makeLinks $bname $i "--red"
-done
+# Setup links to ~/bin/
+. ./make_links.sh
 
 # Check if all dependencies are installed
 source $LINK_PATH/libs/check_uninstalled.sh
