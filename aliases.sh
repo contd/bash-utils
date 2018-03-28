@@ -17,6 +17,7 @@ case "$myos" in
 		alias chrome="google-chrome"
 		alias tscreen.off="xinput disable 15" # turns touch screen off (if xid is 15)
 		alias tscreen.oon="xinput enable 15"  # run: xinput --list to find xid for touch screen
+		alias xgcc="xtensa-lx106-elf-gcc"
 		#wkhtmltoimage="export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb && xvfb-run -a -e /tmp/          wkhtmltoimage-xvfb-run.log wkhtmltoimage"
 		;;
   *) ;;
