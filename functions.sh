@@ -9,6 +9,7 @@
 # done
 
 #source "$HOME/bash-utils/funcs/cheats.sh"
+source "$HOME/bash-utils/funcs/dates.sh"
 source "$HOME/bash-utils/funcs/docker.sh"
 source "$HOME/bash-utils/funcs/docs.sh"
 source "$HOME/bash-utils/funcs/explain.sh"
