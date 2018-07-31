@@ -11,13 +11,15 @@ case "$myos" in
 	Linux)
 	  colorflag='--color=auto'
     alias ls="command ls ${colorflag}" # ls using colorflag set above
-		alias gpg='gpg2'
+		alias gpg='gpg2 --batch --no-tty'
 		alias open="xdg-open"
 		alias drive="drive-google"
 		alias chrome="google-chrome"
 		alias tscreen.off="xinput disable 15" # turns touch screen off (if xid is 15)
 		alias tscreen.oon="xinput enable 15"  # run: xinput --list to find xid for touch screen
 		alias xgcc="xtensa-lx106-elf-gcc"
+		alias flush-dns="sudo systemctl restart systemd-resolved.service && sudo systemd-resolve --statistics"
+		#alias flush-dns="sudo systemd-resolve --flush-caches"
 		#wkhtmltoimage="export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb && xvfb-run -a -e /tmp/          wkhtmltoimage-xvfb-run.log wkhtmltoimage"
 		;;
   *) ;;
@@ -57,6 +59,10 @@ alias df='dfc'
 alias tunnel='ssh -f -N tunnel' # See ~/.ssh/config
 alias grepc="grep --color=always"
 alias today='calendar -A 0 -f /usr/share/calendar/calendar.mark | sort'
+#
+# Git Additions
+alias gco="git checkout"
+#
 # Atom tweaks
 #alias atom='tmpin atom'
 #alias gda='git diff | tmpin atom'
@@ -78,7 +84,9 @@ alias dka='docker kill $(docker ps -q)'
 # removes all docker images
 #alias dri='docker rmi $(docker images -q)'
 # removes all docker containers then all docker images
-alias cldocker='docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
+alias clear_docker='echo "Removing containers…" && docker rm $(docker ps -a -q) -v -f 2> /dev/null'
+alias clean_docker='echo "Removing images…" && docker rmi $(docker images -q) -f 2> /dev/null'
+#alias cldocker='docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
 # Generates a mock of an interface in package defined in the current working directory
 # Usage: makemock <interfaceToMock>
 alias makemock='mockgen $(pwd | sed "s:$GOPATH/src/::")'

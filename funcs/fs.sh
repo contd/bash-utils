@@ -69,3 +69,19 @@ function top10
     loc=$(pwd)
     du -a $loc/* | sort -n -r | head -n 10
 }
+#
+# pascal_case
+#
+function pascal_case
+{
+	if [[ -z "$1" ]]; then
+		echo "Usage pascal_case <file_extension>"
+		echo "Example: pascal_case svg"
+		return
+	fi
+	for i in *.$1;do 
+		NEW=$(echo $i  | sed -r 's/(^|_)([a-z])/\U\2/g' | tr -d '_')
+		echo "mv $i $NEW"
+		mv $i $NEW
+	done
+}

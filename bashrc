@@ -74,8 +74,11 @@ fi
 ## Cargo (Rust)
 if [ -d "$HOME/.cargo" ]; then PATH="$HOME/.cargo/bin:$PATH"; fi
 
+## Perl6
+if [[ -d $HOME/rakudo ]]; then PATH=$HOME/rakudo/install/bin/:$HOME/rakudo/install/share/perl6/site/bin:$PATH;fi
+
 ## Home bin
-PATH="$HOME/bin:$PATH"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export PATH="$PATH"
 export TERM="xterm-256color"
@@ -84,11 +87,15 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LS_COLORS='di=94:fi=93:ln=32:pi=5:so=1;35;41:bd=1;33;40:cd=1;36;44:or=31:mi=91:ex=31:*.deb=96'
 
 ## Cuda cudnn
-if [ -d /usr/local/cuda/lib64 ]; then export LD_LIBRARY_PATH=/usr/local/cuda/lib64/; fi
+#if [ -d /usr/local/cuda/lib64 ]; then export LD_LIBRARY_PATH=/usr/local/cuda/lib64/; fi
 
 ## Powerline
 PWRLINE="/usr/share/powerline/bindings/bash/powerline.sh"
 if [ -f "$PWRLINE" ]; then . $PWRLINE; fi 
 
-## Anything after this was added by something else and should be looked into immediatly!!
+## GPG socket bug
+GNUPGHOME=~/.gnupg
+GPG_TTY=$(tty)
+export GPG_TTY
 
+## Anything after this was added by something else and should be looked into immediatly!!
