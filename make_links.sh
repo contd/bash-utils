@@ -17,6 +17,9 @@ function makeLinks {
 # Make sure ~/bin is present
 if [ ! -d "$HOME/bin" ];then
 	mkdir $HOME/bin
+else
+	echo "Removing existing links.  Anything here will be deleted! Be sure only sym links are put here!"
+	rm $HOME/bin/*
 fi
 
 # Utils
