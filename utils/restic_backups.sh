@@ -14,19 +14,11 @@ restic backup /home/jason/.ssh --quiet
 restic backup /data/Mail --quiet
 restic backup /opt/apps/tor-browser_en-US --quiet
 
-if [ "`ping -c 1 hugo`" ];then
-	#rsync -a --delete-before /data/kvm/ hugo:/data/svol/kvm/
-	#rsync -a --delete-before /data/Qt/ hugo:/data/svol/Qt/
-	rsync -a --delete-before /data/Library/ hugo:/data/svol/Library/
-	rsync -a --delete-before /data/Media/ hugo:/data/svol/Media/
-	rsync -a --delete-before /data/home/ hugo:/data/svol/home/
-fi
-
 if [ "`ping -c 1 lacie`" ];then
-	RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/Library"
-	restic backup /data/Library/ --quiet
-	RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/Media"
-	restic backup /data/Media/ --quiet
+	#RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/Library"
+	#restic backup /data/Library/ --quiet
+	#RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/Media"
+	#restic backup /data/Media/ --quiet
 	RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/backups/home"
 	restic backup /home/jason/ --exclude-file=/data/exclude_file --one-file-system --quiet
 	restic backup /data/home/ --exclude=/data/home/develop --quiet
