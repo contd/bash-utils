@@ -4,11 +4,11 @@ myos=`uname -s`
 
 case "$myos" in
   Darwin)
-    DROID_ROOT="$HOME/Library/Android"
+    DROID_ROOT="~/Library/Android"
     ANDROID_HOME="$DROID_ROOT/sdk"
     ;;
   Linux)
-    DROID_ROOT="$HOME/Android"
+    DROID_ROOT="~/Android"
     ANDROID_HOME="$DROID_ROOT/Sdk"
     ;;
   *) ;;
@@ -27,31 +27,31 @@ export AWS_PROFILE="default"  # aws default profile
 export ECS_PROFILE="default"  # ecs default profile
 #
 ## Google Cloud SDK
-if [ -f "/home/jason/google-cloud-sdk/path.bash.inc" ];then 
+if [ -f "~/google-cloud-sdk/path.bash.inc" ];then 
 	# The next line updates PATH for the Google Cloud SDK.
-	source "/home/jason/google-cloud-sdk/path.bash.inc" 
+	source "~/google-cloud-sdk/path.bash.inc" 
 fi
-if [ -f "/home/jason/google-cloud-sdk/completion.bash.inc" ];then 
+if [ -f "~/google-cloud-sdk/completion.bash.inc" ];then 
 	# The next line enables shell command completion for gcloud.
-	source "/home/jason/google-cloud-sdk/completion.bash.inc"
+	source "~/google-cloud-sdk/completion.bash.inc"
 fi
 #
 ## Calibre Dev
-if [[ -d "$HOME/current-projects/calibre" ]]; then
-	export CALIBRE_DEVELOP_FROM="$HOME/current-projects/calibre/src"
+if [[ -d "~/current-projects/calibre" ]]; then
+	export CALIBRE_DEVELOP_FROM="~/current-projects/calibre/src"
 fi
 ## ESP8266 Dev
-if [[ -d "$HOME/esp-open-sdk" ]]; then
-	export PATH="$HOME/esp-open-sdk/xtensa-lx106-elf/bin/:$PATH"
+if [[ -d "~/esp-open-sdk" ]]; then
+	export PATH="~/esp-open-sdk/xtensa-lx106-elf/bin/:$PATH"
 fi
 #
 ## Minikube & Kubectl
-if [[ -d "$HOME/.minikube" ]]; then
+if [[ -d "~/.minikube" ]]; then
 	export MINIKUBE_WANTUPDATENOTIFICATION=false
 	export MINIKUBE_WANTREPORTERRORPROMPT=false
 	export MINIKUBE_HOME=$HOME
 	export CHANGE_MINIKUBE_NONE_USER=true
-	export KUBECONFIG=$HOME/.kube/config
+	export KUBECONFIG=~/.kube/config
 fi
 #
 ## Electron Debugging

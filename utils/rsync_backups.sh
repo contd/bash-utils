@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 if [ "`ping -c 1 hugo`" ];then
-	rsync -a --delete-before /data/Library/ hugo:/data/svol/Library/
-	rsync -a --delete-before /data/Media/ hugo:/data/svol/Media/
-	rsync -a --delete-before /data/Training_Resources/ hugo:/data/svol/Training_Resources/
-	rsync -a --delete-before /data/home/ hugo:/data/svol/home/
+	rsync -a --delete-before /data/Library/ lacie::library
+	rsync -a --delete-before /data/Media/ lacie::media
+	#rsync -a --delete-before /data/home/ lacie::home
 fi
 
 exit 0

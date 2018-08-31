@@ -1,53 +1,26 @@
 #!/usr/bin/env bash
 
-LINK_PATH=`pwd`
-
-# For below
-function makeLinks {
-	BPATH=$1
-	SPATH=$2
-
-  if [ -L "$HOME/bin/$BPATH" ];then
-		rm $HOME/bin/$BPATH
-  fi
-	ansi $3 --newline "ln -s $SPATH $HOME/bin/$BPATH"
-  ln -s $SPATH $HOME/bin/$BPATH
-}
-
-# Make sure ~/bin is present
-if [ ! -d "$HOME/bin" ];then
-	mkdir $HOME/bin
-else
-	echo "Removing existing links.  Anything here will be deleted! Be sure only sym links are put here!"
-	rm $HOME/bin/*
-fi
+# Bins
+for j in utils bin docs media web; do
+	for i in ~/.bash/$j/*;do
+		fname=$(basename $i)
+		bname=${fname%.*}
+		if [[ ! -L ~/bin/$bname ]];then
+			ansi --green "ln -s ~/.bash/$j/$fname ~/bin/$bname"
+			ln -s ~/.bash/$j/$fname ~/bin/$bname
+		else
+			ansi --blue "Keeping existing: ~/bin/$bname"
+		fi
+	done
+done
 
 # Utils
-for i in $LINK_PATH/utils/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-	if [ $bname != "ansi" ];then
-		makeLinks $bname $i "--green"
-	fi
-done
-
+#for i in ~/.bash/utils/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
 # Docs
-for i in $LINK_PATH/docs/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-  makeLinks $bname $i "--yellow"
-done
-
+#for i in ~/.bash/docs/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
 # Media
-for i in $LINK_PATH/media/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-  makeLinks $bname $i "--blue"
-done
-
+#for i in ~/.bash/media/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
 # Web
-for i in $LINK_PATH/web/*;do
-  fname=$(basename $i)
-  bname=${fname%.*}
-  makeLinks $bname $i "--red"
-done
+#for i in ~/.bash/web/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
+
+exit 0
