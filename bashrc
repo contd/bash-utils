@@ -8,7 +8,7 @@ export ARCHFLAGS="-arch x86_64"
 HISTSIZE=5000
 HISTFILESIZE=20000
 shopt -s histappend
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "[$(date "+%Y-%m-%d.%H:%M:%S")] $(pwd)> $(history 1)" >> ~/.local/logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "[$(date "+%Y-%m-%d.%H:%M:%S")] $(history 1)  [$(pwd)]" >> ~/.local/logs/bash-history-$(date "+%Y-%m").log; fi'
 #export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # First lets findout what os we are on
 myos=`uname -s`
@@ -70,13 +70,8 @@ if [ -f "$NVM_DIR/nvm.sh" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-# RVM
-if [ "$myos" == "Linux" ]; then
-  ## For now only know this works or needed this way for Linux
-  #if [ -s "$RVM_DIR/scripts/rvm" ];then source "$RVM_DIR/scripts/rvm"; fi
-	# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-	PATH="$PATH:$HOME/.rvm/bin"
-fi
+## RVM
+if [[ -d "$HOME/.rvm" ]]; then PATH="$PATH:$HOME/.rvm/bin"; fi
 
 ## Pyenv
 if [ -d "$HOME/.pyenv" ];then
@@ -89,7 +84,7 @@ fi
 if [ -d "$HOME/.cargo" ]; then PATH="$HOME/.cargo/bin:$PATH"; fi
 
 ## Perl6
-if [[ -d $HOME/rakudo ]]; then PATH=$HOME/rakudo/install/bin/:$HOME/rakudo/install/share/perl6/site/bin:$PATH;fi
+if [[ -d $HOME/rakudo ]]; then PATH=$HOME/rakudo/bin:$HOME/rakudo/share/perl6/site/bin:$PATH;fi
 
 export TERM="xterm-256color"
 export CLICOLOR=true

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Bins
 for j in utils bin docs media web; do
 	for i in ~/.bash/$j/*;do
 		fname=$(basename $i)

@@ -64,8 +64,5 @@ fi
 #export ELECTRON_DBG_OPEN="chrome-cli open http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&port=5858 -n"
 #export ELECTRON_MAKE_PKG="asar pack @$ $1.asar"
 
-export TF_NEED_OPENCL=1
-export HOST_CXX_COMPILER=/usr/bin/g++-4.8
-export HOST_C_COMPILER=/usr/bin/gcc-4.8
-export COMPUTECPP_TOOLKIT_PATH=/usr/local/computecpp
-export COMPUTE=:0
+export QT_DIR=~/Qt
+export QT_VERSION=5.11.1

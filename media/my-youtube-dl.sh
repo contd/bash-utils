@@ -4,19 +4,13 @@ if [ "$#" -le "0" ];then
   echo "You need to pass in the url or id of the YouTube video or playlist to download."
 else
 	VURL=$1
-	id=$(youtube-dl --id --get-filename $VURL)
-	bid=$(basename $id)
-	VEXT="${bid##*.}"
-	YTID=${bid%.*}
 
-	ansi --yellow --newline "==================================================================================="
-	ansi --green --newline  "Downloading ${VURL}"
-	ansi --green --newline  " [Id: ${id} | Bid: ${bid} | Ext: ${VEXT} | YTID: ${YTID} ]"
-	ansi --yellow --newline "==================================================================================="
+	ansi --yellow "==================================================================================="
+	ansi --green  "Downloading ${VURL}"
+	ansi --yellow "==================================================================================="
 
-  youtube-dl --restrict-filenames --write-thumb --write-sub $VURL
-
-  rename "s/-$YTID//" *.*
+  #youtube-dl --restrict-filenames --write-thumb --write-sub $VURL
+	youtube-dl --restrict-filenames -o '%(playlist_index)s_%(title)s.%(ext)s' $VURL
 fi
 
 exit 0
