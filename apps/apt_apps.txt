@@ -1,0 +1,40 @@
+# Developer
+docker
+jq
+mycli
+pgcli
+
+# Media
+convert
+imgp
+ffmpeg
+gifsicle
+HandBrakeCLI
+pandoc
+pdftohtml
+
+# Network
+curl
+ifstat
+iftop
+iptraf
+nmap
+nmon
+rsync
+speedtest-cli
+wget
+youtube-dl
+vtop:util-vserver
+
+# Utils
+asciinema
+awk
+colordiff
+gpg2
+lnav
+openssl
+pandoc
+progress
+rename
+unzip
+xsel

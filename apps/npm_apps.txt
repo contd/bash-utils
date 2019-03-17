@@ -1,0 +1,33 @@
+# Entertain
+bastet
+googler
+movie
+peerflix
+
+# Developer
+how2
+loadtest
+tagui
+
+# Media
+emoj
+lepto:lepto-cli
+mobicon:mobicon-cli
+pageres:pageres-cli
+svgo
+thumbsup
+webshot:webshot-cli
+
+# Networking
+gtop
+iostat
+is-online:is-online-cli
+is-up:is-up-cli
+speedtest-net
+
+# Utility
+alder
+bibtex-search
+moeda
+tidy-markdown
+wego

@@ -9,24 +9,24 @@ LOGFILE=~/.local/logs/restic_b2back-history-$(date "+%Y-%m").log
 echo "=========================================================================" >> $LOGFILE
 echo "Started: $(date)" >> $LOGFILE
 
-restic backup /home/jason/.gnupg --quiet
-restic backup /home/jason/.ssh --quiet
-restic backup /opt/apps/tor-browser_en-US --quiet
-if [[ -f ~/Vaults/Documents/feedly-2018-07-30.opml ]]; then restic backup /home/jason/Vaults/Documents --quiet;fi
-if [[ -f ~/Vaults/Locker/hosts ]]; then restic backup /home/jason/Vaults/Locker --quiet;fi
-restic backup /data/home/Mail --quiet
-restic backup /data/home/.mozilla --quiet
-restic backup /data/home/.thunderbird --quiet
-restic backup /data/home/home-utils --quiet
-restic backup /data/home/Arduino --quiet
-restic backup /data/home/.aws --quiet
-restic backup /data/home/.password-store --quiet
-restic backup /data/home/bash-utils --quiet
-restic backup /data/home/.offlineimap --quiet
-restic backup /data/home/.gnupg --quiet
-restic backup /data/home/kvm --quiet
-restic backup /data/home/.ecs --quiet
-restic backup /data/home/.minikube --exclude="/data/home/.minikube/cache" --quiet
+/usr/local/bin/restic backup /btrfs/Vaults/Documents --quiet
+/usr/local/bin/restic backup /btrfs/Vaults/Private --quiet
+/usr/local/bin/restic backup /home/jason/.gnupg --quiet
+/usr/local/bin/restic backup /home/jason/.ssh --quiet
+/usr/local/bin/restic backup /opt/apps/tor-browser_en-US --quiet
+/usr/local/bin/restic backup /data/home/Mail --quiet
+/usr/local/bin/restic backup /data/home/.mozilla --quiet
+/usr/local/bin/restic backup /data/home/.thunderbird --quiet
+/usr/local/bin/restic backup /data/home/home-utils --quiet
+/usr/local/bin/restic backup /data/home/Arduino --quiet
+/usr/local/bin/restic backup /data/home/.aws --quiet
+/usr/local/bin/restic backup /data/home/.password-store --quiet
+/usr/local/bin/restic backup /data/home/bash-utils --quiet
+/usr/local/bin/restic backup /data/home/.offlineimap --quiet
+/usr/local/bin/restic backup /data/home/.gnupg --quiet
+/usr/local/bin/restic backup /data/home/kvm --quiet
+/usr/local/bin/restic backup /data/home/.ecs --quiet
+/usr/local/bin/restic backup /data/home/.minikube --exclude="/data/home/.minikube/cache" --quiet
 
 echo "Finished: $(date)" >> $LOGFILE
 

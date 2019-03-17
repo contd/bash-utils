@@ -4,56 +4,44 @@ myos=`uname -s`
 
 case "$myos" in
   Darwin)
-    DROID_ROOT="~/Library/Android"
-    ANDROID_HOME="$DROID_ROOT/sdk"
+    DROID_ROOT=~/Library/Android
+    ANDROID_HOME=$DROID_ROOT/sdk
     ;;
   Linux)
-    DROID_ROOT="~/Android"
-    ANDROID_HOME="$DROID_ROOT/Sdk"
+		ANDROID_HOME=/home/jason/Android/Sdk
     ;;
   *) ;;
 esac
 #
-# Android
-if [[ -d "$ANDROID_HOME" ]]; then
-	export ANDROID_HOME
-	export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+## Android
+if [[ ! -z $ANDROID_HOME ]]; then
+  export ANDROID_HOME
+  export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 fi
+#
 ## AWS
-if [[ -f "$HOME/.pyenv/shims/aws_completer" ]]; then
-	complete -C "$HOME/.pyenv/shims/aws_completer" aws
-fi
 export AWS_PROFILE="default"  # aws default profile
 export ECS_PROFILE="default"  # ecs default profile
 #
 ## Google Cloud SDK
-if [ -f "~/google-cloud-sdk/path.bash.inc" ];then 
+if [ ! -z ~/google-cloud-sdk/path.bash.inc ];then
 	# The next line updates PATH for the Google Cloud SDK.
-	source "~/google-cloud-sdk/path.bash.inc" 
+	source ~/google-cloud-sdk/path.bash.inc
 fi
-if [ -f "~/google-cloud-sdk/completion.bash.inc" ];then 
+if [ ! -z ~/google-cloud-sdk/completion.bash.inc ];then
 	# The next line enables shell command completion for gcloud.
-	source "~/google-cloud-sdk/completion.bash.inc"
+	source ~/google-cloud-sdk/completion.bash.inc
 fi
-#
+
 ## Calibre Dev
-if [[ -d "~/current-projects/calibre" ]]; then
-	export CALIBRE_DEVELOP_FROM="~/current-projects/calibre/src"
-fi
+#if [[ ! -z "~/current-projects/calibre" ]]; then
+#	export CALIBRE_DEVELOP_FROM="~/current-projects/calibre/src"
+#fi
 ## ESP8266 Dev
-if [[ -d "~/esp-open-sdk" ]]; then
-	export PATH="~/esp-open-sdk/xtensa-lx106-elf/bin/:$PATH"
-fi
-#
-## Minikube & Kubectl
-if [[ -d "~/.minikube" ]]; then
-	export MINIKUBE_WANTUPDATENOTIFICATION=false
-	export MINIKUBE_WANTREPORTERRORPROMPT=false
-	export MINIKUBE_HOME=$HOME
-	export CHANGE_MINIKUBE_NONE_USER=true
-	export KUBECONFIG=~/.kube/config
-fi
-#
+#if [[ ! -z "~/esp-open-sdk" ]]; then
+#	export PATH="~/esp-open-sdk/xtensa-lx106-elf/bin/:$PATH"
+#fi
+
 ## Electron Debugging
 ## ONLY TURN THIS ON DURING DEV WORK - DO NOT LEAVE TURNED ON
 #export ELECTRON_ENABLE_LOGGING=true

@@ -1,0 +1,15 @@
+# Developer
+mycli
+pgcli
+pockyt
+
+# Media
+image-scraper:ImageScraper
+instagram-scraper
+termtosvg
+
+# Networking
+awscli
+ddgr
+gping:pinggraph
+

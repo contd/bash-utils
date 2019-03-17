@@ -10,21 +10,21 @@ UTILITIES=(alder battery-level bibtex-search ccat progress speedtest-net moeda w
 # Functions
 function plhead {
   __TXT=$1
-  ansi --green --newline "${__TXT}"
-  ansi --green --newline "==================================="
+  ansi --green "${__TXT}"
+  ansi --green "==================================="
 }
 function plgreen {
   __TXT=$1
-  ansi --green --newline "${__TXT}"
+  ansi --green "${__TXT}"
 }
 function plyell {
   __TXT=$1
-  ansi --yellow --newline "${__TXT}"
+  ansi --yellow "${__TXT}"
 }
 function plcolor {
   __COLOR=$1
   __TXT=$2
-  ansi ${__COLOR} --newline "${__TXT}"
+  ansi ${__COLOR} "${__TXT}"
 }
 function plist {
   __COLOR=$1
@@ -140,7 +140,7 @@ else
   done
   echo ""
 
-  ansi --blue --newline "--------------------------------------------------------------------"
+  ansi --blue "--------------------------------------------------------------------"
   plgreen "Get news: (see https://github.com/omgimanerd/getnews.tech)"
   plcolor "--yellow" "  curl getnews.tech/sources"
   echo ""

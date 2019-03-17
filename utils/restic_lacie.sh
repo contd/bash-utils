@@ -8,9 +8,12 @@ if [ "`ping -c 1 lacie`" ];then
 	export RESTIC_PASSWORD=$(cat ~/.config/restic/restic_password)
 	export RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/backups"
 
-	restic backup /home/jason --exclude-file="/data/exclude_file" --one-file-system --quiet
-	restic backup --exclude="Qt" --exclude="restore" /data --quiet
-	restic backup /opt/apps/tor-browser_en-US --quiet
+	/usr/local/bin/restic backup /home/jason --exclude-file="/btrfs/exclude_file" --one-file-system --quiet
+	/usr/local/bin/restic backup /btrfs/Art --quiet
+	/usr/local/bin/restic backup /btrfs/Backups --quiet
+	/usr/local/bin/restic backup /btrfs/home --exclude-file="/btrfs/exclude_file" --quiet
+	/usr/local/bin/restic backup /btrfs/Vaults --quiet
+	/usr/local/bin/restic backup /opt/apps/tor-browser_en-US --quiet
 
 	unset RESTIC_PASSWORD
 	unset RESTIC_REPOSITORY

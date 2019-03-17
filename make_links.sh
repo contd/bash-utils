@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for j in utils bin docs media web; do
+for j in utils bin media web; do
 	for i in ~/.bash/$j/*;do
 		fname=$(basename $i)
 		bname=${fname%.*}
@@ -8,15 +8,13 @@ for j in utils bin docs media web; do
 			ansi --green "ln -s ~/.bash/$j/$fname ~/bin/$bname"
 			ln -s ~/.bash/$j/$fname ~/bin/$bname
 		else
-			ansi --blue "Keeping existing: ~/bin/$bname"
+			ansi --blue --no-newline "Keeping existing: ~/bin/$bname";ansi --green "(${j})"
 		fi
 	done
 done
 
 # Utils
 #for i in ~/.bash/utils/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
-# Docs
-#for i in ~/.bash/docs/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
 # Media
 #for i in ~/.bash/media/*;do fname=$(basename $i);bname=${fname%.*};echo "alias $bname=\"$i\""; done
 # Web

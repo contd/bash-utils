@@ -76,7 +76,7 @@ function take_pictures
 	__png_fn="${__filepath}/png/${__filename}.png"
 	__full_png="${__filepath}/png/${__filename}_full.png"
 
-	webshot --quality 100 "${__aurl}" "${__full_png}";
+	webshot --quality=100 "${__aurl}" "${__full_png}";
 	cp "${__full_png}" "${__png_fn}"
 	convert $__png_fn -resize x100 $__png_fn
 }

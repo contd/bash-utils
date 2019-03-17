@@ -30,10 +30,10 @@ function mils2date
 	fi
 }
 
-if [[ "$1" == "date2mils" ]];then
-	date2mils $2
-if [[ "$1" == "mils2date" ]];then
-	mils2date $2
-else
-	showUsage
-fi
+#if [[ "$1" == "date2mils" ]];then
+#	date2mils $2
+#if [[ "$1" == "mils2date" ]];then
+#	mils2date $2
+#else
+#	showUsage
+#fi
