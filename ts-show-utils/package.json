@@ -1,0 +1,36 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nodejs CLI utils",
+  "author": "Jason Kumpf <jason@kumpf.io> (https://kumpf.io/)",
+  "license": "MIT",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "compile": "tsc -p ./ && npm run lint",
+    "recompile": "yarn clean && yarn compile",
+    "watch": "tsc -watch -p ./",
+    "test": "yarn compile && mocha",
+    "lint": "tslint"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.5.12",
+    "@oclif/tslint": "^3.1.1",
+    "chalk": "^2.4.2",
+    "cli-ux": "^5.2.1",
+    "execa": "^1.0.0",
+    "figures": "^2.0.0",
+    "fs-extra": "^7.0.1",
+    "listr": "^0.14.3",
+    "log-symbols": "^2.2.0",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/node": "^11.11.3",
+    "tslint": "^5.14.0",
+    "tslint-eslint-rules": "^5.4.0"
+  }
+}
