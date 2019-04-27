@@ -63,10 +63,6 @@ if [ -f "$NVM_DIR/nvm.sh" ]; then
 	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
-## Pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 ## Cargo (Rust)
 if [ -d $HOME/.cargo ]; then PATH="$HOME/.cargo/bin:$PATH"; fi
 ## Perl6
@@ -78,11 +74,11 @@ export TERM="xterm-256color"
 export CLICOLOR=true
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LS_COLORS='di=94:fi=93:ln=32:pi=5:so=1;35;41:bd=1;33;40:cd=1;36;44:or=31:mi=91:ex=31:*.deb=96'
-## Powerline
+## Powerline (macOS homebrew)
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. /home/jason/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+. /home/jason/.pyenv/versions/3.6.6/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 ## GPG socket bug
 GNUPGHOME=~/.gnupg
 GPG_TTY=$(tty)
@@ -91,6 +87,6 @@ export GPG_TTY
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$PATH"
 # kubectl completion
-source <(kubectl completion bash)
+if [[ ! -z /usr/local/bin/kubectl ]]; then source <(kubectl completion bash); fi
 
 ## Anything after this was added by something else and should be looked into immediatly!!

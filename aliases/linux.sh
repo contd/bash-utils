@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # the essentials
+alias ls="command ls --color=auto"
 source ~/.bash/aliases/common.sh
 # Laptop/Desktop specific
 alias open="xdg-open"
