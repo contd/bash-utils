@@ -78,6 +78,9 @@ if [ -d $HOME/.cargo ]; then PATH="$HOME/.cargo/bin:$PATH"; fi
 if [[ -d $HOME/rakudo ]]; then PATH="$HOME/rakudo/bin:$HOME/rakudo/share/perl6/site/bin:$PATH";fi
 ## Rbenv
 if [[ -d $HOME/.rbenv ]]; then PATH="$HOME/.rbenv/bin:$PATH"; fi
+## Homebrew Ruby
+if [[ -d /usr/local/opt/ruby/bin ]]; then PATH="/usr/local/opt/ruby/bin:$PATH"; fi
+# /usr/local/lib/ruby/gems/2.7.0/bin
 ## Composer global tools (etc. laravel, valet, etc)
 if [[ -d $HOME/.composer ]]; then PATH="$HOME/.composer/vendor/bin:$PATH"; fi
 if [[ -d $HOME/.config/composer ]]; then PATH="$HOME/.config/composer/vendor/bin:$PATH"; fi
