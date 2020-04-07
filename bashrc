@@ -24,6 +24,7 @@ case "$myos" in
 		export GOPATH="$HOME/go"
 		export GOHOME="$GOPATH/src/github.com/contd"
 		export RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/backups"
+		eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 		;;
 	Darwin)
 		export EDITOR="/usr/local/bin/vim"
@@ -52,6 +53,8 @@ source "$HOME/bash-utils/funcs/dates.sh"
 fi
 ## Development Extras
 if [ -f "$HOME/.bash/devsetup.sh" ]; then source "$HOME/.bash/devsetup.sh"; fi
+## Pyenv
+if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 ## Perlbrew
 if [ -f "$PERLBREW_HOME/etc/bashrc" ]; then
 	PATH="$PERLBREW_HOME/perls/current/bin:$PATH"
@@ -77,8 +80,9 @@ if [[ -d $HOME/rakudo ]]; then PATH="$HOME/rakudo/bin:$HOME/rakudo/share/perl6/s
 if [[ -d $HOME/.rbenv ]]; then PATH="$HOME/.rbenv/bin:$PATH"; fi
 ## Composer global tools (etc. laravel, valet, etc)
 if [[ -d $HOME/.composer ]]; then PATH="$HOME/.composer/vendor/bin:$PATH"; fi
-## Pyenv
-if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+if [[ -d $HOME/.config/composer ]]; then PATH="$HOME/.config/composer/vendor/bin:$PATH"; fi
+# kubectl completion
+if command -v kubectl 1>/dev/null 2>&1; then source <(kubectl completion bash); fi
 ## Terminal Colors
 export TERM="xterm-256color"
 export CLICOLOR=true
@@ -91,8 +95,12 @@ export LESS='-R'
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-source /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh
-
+if [[ -f /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh ]]; then
+	source /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
+if [[ -f /usr/local/lib/python3.7/dist-packages/powerline/bindings/bash/powerline.sh ]]; then
+	source /usr/local/lib/python3.7/dist-packages/powerline/bindings/bash/powerline.sh
+fi
 ## GPG socket bug
 GNUPGHOME=~/.gnupg
 GPG_TTY=$(tty)
@@ -100,8 +108,6 @@ export GPG_TTY
 ## Home bin
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$PATH"
-# kubectl completion
-if command -v kubectl 1>/dev/null 2>&1; then source <(kubectl completion bash); fi
 
 ## Anything after this was added by something else and should be looked into immediatly!!
 
