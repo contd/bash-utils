@@ -21,6 +21,7 @@ case "$myos" in
     export GOPATH="$HOME/go"
     export GOHOME="$GOPATH/src/github.com/contd"
 		export RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/backups"
+		eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 		;;
   Darwin)
 		export EDITOR="/usr/local/bin/vim"
@@ -49,6 +50,12 @@ fi
 if [ -f "$HOME/.bash/devsetup.sh" ]; then source "$HOME/.bash/devsetup.sh"; fi
 ## Bash Completion
 if [ -f $BASHCOMPL ]; then source $BASHCOMPL; fi
+## Pyenv
+if [ -d "$HOME/.pyenv" ]; then
+	PATH="/home/jason/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
 ## Perlbrew
 if [ -f "$PERLBREW_HOME/etc/bashrc" ]; then
 	PATH="$PERLBREW_HOME/perls/current/bin:$PATH"
@@ -69,6 +76,8 @@ if [ -d $HOME/.cargo ]; then PATH="$HOME/.cargo/bin:$PATH"; fi
 if [[ -d $HOME/rakudo ]]; then PATH="$HOME/rakudo/bin:$HOME/rakudo/share/perl6/site/bin:$PATH";fi
 ## Rbenv
 if [[ -d $HOME/.rbenv ]]; then PATH="$HOME/.rbenv/bin:$PATH"; fi
+## Composer global tools (etc. laravel, valet, etc)
+if [[ -d $HOME/.config/composer ]]; then PATH="$HOME/.config/composer/vendor/bin:$PATH"; fi
 ## Terminal Colors
 export TERM="xterm-256color"
 export CLICOLOR=true
@@ -78,7 +87,7 @@ export LS_COLORS='di=94:fi=93:ln=32:pi=5:so=1;35;41:bd=1;33;40:cd=1;36;44:or=31:
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. /home/jason/.pyenv/versions/3.6.6/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+source /usr/local/lib/python3.7/dist-packages/powerline/bindings/bash/powerline.sh
 ## GPG socket bug
 GNUPGHOME=~/.gnupg
 GPG_TTY=$(tty)
@@ -90,3 +99,4 @@ export PATH="$PATH"
 if [[ ! -z /usr/local/bin/kubectl ]]; then source <(kubectl completion bash); fi
 
 ## Anything after this was added by something else and should be looked into immediatly!!
+

@@ -24,12 +24,9 @@ export AWS_PROFILE="default"  # aws default profile
 export ECS_PROFILE="default"  # ecs default profile
 #
 ## Google Cloud SDK
-if [ -d ~/google-cloud-sdk/path.bash.inc ];then
+if [[ -d ~/google-cloud-sdk ]];then
 	# The next line updates PATH for the Google Cloud SDK.
 	source ~/google-cloud-sdk/path.bash.inc
-fi
-if [ -d ~/google-cloud-sdk/completion.bash.inc ];then
-	# The next line enables shell command completion for gcloud.
 	source ~/google-cloud-sdk/completion.bash.inc
 fi
 
