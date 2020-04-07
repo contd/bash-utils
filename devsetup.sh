@@ -33,6 +33,17 @@ if [ ! -z ~/google-cloud-sdk/completion.bash.inc ];then
 	source ~/google-cloud-sdk/completion.bash.inc
 fi
 
+#
+## Qt (linux and macOS)
+if [[ -d $HOME/Qt ]];then
+	export QT_DIR=$HOME/Qt
+	export QT_VERSION=5.13.0
+	export QT_API=5.13.0
+	export CGO_CFLAGS_ALLOW=".*"
+	export CGO_CXXFLAGS_ALLOW=".*"
+	export CGO_LDFLAGS_ALLOW=".*"
+fi
+
 ## Calibre Dev
 #if [[ ! -z "~/current-projects/calibre" ]]; then
 #	export CALIBRE_DEVELOP_FROM="~/current-projects/calibre/src"

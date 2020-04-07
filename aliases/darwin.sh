@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+#alias ls="ls --color=auto"
 source $HOME/.bash/aliases/common.sh
 source $HOME/.bash/aliases/develop.sh
-source $HOME/.bash/aliases/senseye.sh
 
+alias pip="pip3"
 alias adventure='emacs -batch -l dunnet'
 alias mailsize='du -hs ~/Mail'
 alias ttop='top -ocpu -R -F -s 2 -n30'
+alias aboutme="archey"
 
 # Servers restart
 alias mongod.start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"

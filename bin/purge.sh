@@ -7,8 +7,8 @@ function purge_adb
 {
   # Purges .AppleDouble files recursively from current path
   CLOC=$1
-  ansii --green --newline "Purging .AppleDouble files from here: $CLOC"
-  ansii --yellow --newline "================================================================="
+  ansi --green --newline "Purging .AppleDouble files from here: $CLOC"
+  ansi --yellow --newline "================================================================="
   find $CLOC -name .AppleDouble* -exec rm -rf {} \;
 }
 #
@@ -18,8 +18,8 @@ function purge_ds
 {
 	# Purges .DS_Store files recursively from current path
   CLOC=$1
-  ansii --green --newline "Purging .DS_Store and ._.DS_Store files from here: $CLOC"
-  ansii --yellow --newline "================================================================="
+  ansi --green --newline "Purging .DS_Store and ._.DS_Store files from here: $CLOC"
+  ansi --yellow --newline "================================================================="
 
   find $CLOC -name .DS_Store -exec rm -f {} \;
   find $CLOC -name ._.DS_Store -exec rm -f {} \;

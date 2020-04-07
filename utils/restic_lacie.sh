@@ -6,7 +6,7 @@ echo "Started: $(date)" >> $LOGFILE
 
 if [ "`ping -c 1 lacie`" ];then
 	export RESTIC_PASSWORD=$(cat ~/.config/restic/restic_password)
-	export RESTIC_REPOSITORY="sftp:jason@lacie:/export/GREENFS/backups"
+	export RESTIC_REPOSITORY="sftp:jason@lacie:/srv/dev-disk-by-label-GREENFS/backups"
 
 	/usr/local/bin/restic backup /home/jason --exclude-file="/btrfs/exclude_file" --one-file-system --quiet
 	/usr/local/bin/restic backup /btrfs/Art --quiet

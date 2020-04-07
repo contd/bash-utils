@@ -2,20 +2,21 @@
 
 if [ -z $1 ]; then
   echo
-  echo "Usage:"
-  echo "   otp google"
+  ansi --green "Usage:"
+  ansi --cyan  "  otp google"
+  ansi --cyan  "  otp github"
   echo
-  echo "Configuration: $HOME/.otpkeys"
-  echo "Format: name=key"
+  ansi --blue  "Configuration: $HOME/.otpkeys"
+  ansi --green "Format: name=key"
   exit
 fi
 
 OTPKEY="$(sed -n "s/${1}=//p" $HOME/.otpkeys)"
 
 if [ -z "$OTPKEY" ]; then
-  echo "$(basename $0): Bad Service Name '$1'"
+  ansi --red "$(basename $0): Bad Service Name '$1'"
   $0
-  exit
+  exit 1
 fi
 
 oathtool --totp -b "$OTPKEY"
