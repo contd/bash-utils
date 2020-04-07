@@ -19,6 +19,7 @@ alias flush-dns="sudo systemctl restart systemd-resolved.service && sudo systemd
 alias dus='du -sckx * | sort -nr'
 alias lo="logout"
 #
+alias aboutme="neofetch"
 # Call additional from here
 source ~/.bash/aliases/develop.sh
 source ~/.bash/aliases/services.sh
