@@ -4,8 +4,7 @@ LOGFILE=~/.local/logs/rclone_gdrive-history-$(date "+%Y-%m").log
 echo "=========================================================================" >> $LOGFILE
 echo "Started: $(date)" >> $LOGFILE
 
-#rclone sync --progress --bwlimit=150k ~/Google\ Drive GoogleDrive:
-/usr/local/bin/rclone sync /Users/jason/Google\ Drive GoogleDrive:
+/usr/local/bin/rclone sync /Users/jason/Google\ Drive GoogleDrive: --bwlimit 150
 
 echo "Finished: $(date)" >> $LOGFILE
 

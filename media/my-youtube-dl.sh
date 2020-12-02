@@ -10,7 +10,8 @@ else
 	ansi --yellow "==================================================================================="
 
   #youtube-dl --restrict-filenames --write-thumb --write-sub $VURL
-	youtube-dl --restrict-filenames -o '%(playlist_index)s_%(title)s.%(ext)s' $VURL
+	#youtube-dl --restrict-filenames -o '%(playlist_index)s_%(title)s.%(ext)s' $VURL
+	youtube-dl --restrict-filenames -o '%(title)s.%(ext)s' $VURL
 fi
 
 exit 0

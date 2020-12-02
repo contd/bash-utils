@@ -46,7 +46,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 if [ -f "$HOME/.bash/aliases/aliases.sh" ]; then source "$HOME/.bash/aliases/aliases.sh"; fi
 ## Bash Functions
 if [ -d "$HOME/.bash/funcs" ]; then
-source "$HOME/bash-utils/funcs/dates.sh"
+	source "$HOME/bash-utils/funcs/dates.sh"
 	source "$HOME/bash-utils/funcs/docs.sh"
 	source "$HOME/bash-utils/funcs/man.sh"
 	source "$HOME/bash-utils/funcs/split-hpath.sh"
@@ -55,6 +55,7 @@ fi
 if [ -f "$HOME/.bash/devsetup.sh" ]; then source "$HOME/.bash/devsetup.sh"; fi
 ## Pyenv
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+if [[ -d $HOME/.poetry ]];then source ~/.poetry/env; fi
 ## Perlbrew
 if [ -f "$PERLBREW_HOME/etc/bashrc" ]; then
 	PATH="$PERLBREW_HOME/perls/current/bin:$PATH"
@@ -98,12 +99,13 @@ export LESS='-R'
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-if [[ -f /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh ]]; then
-	source /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh
+#if [[ -f /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh ]]; then
+#	source /Library/Python/3.7/site-packages/powerline/bindings/bash/powerline.sh
+#fi
+if [[ -f /usr/local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]]; then
+	source /usr/local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
 fi
-if [[ -f /usr/local/lib/python3.7/dist-packages/powerline/bindings/bash/powerline.sh ]]; then
-	source /usr/local/lib/python3.7/dist-packages/powerline/bindings/bash/powerline.sh
-fi
+if [[ -f "$HOME/bash-utils/aliases/kube_aliases.sh" ]]; then source ~/bash-utils/aliases/kube_aliases.sh; fi
 ## GPG socket bug
 GNUPGHOME=~/.gnupg
 GPG_TTY=$(tty)
@@ -113,4 +115,3 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$PATH"
 
 ## Anything after this was added by something else and should be looked into immediatly!!
-

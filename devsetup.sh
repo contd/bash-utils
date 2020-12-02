@@ -6,6 +6,7 @@ case "$myos" in
   Darwin)
     DROID_ROOT=~/Library/Android
     ANDROID_HOME=$DROID_ROOT/sdk
+		ANDROID_SDK_ROOT=$ANDROID_HOME
     ;;
   Linux)
 		ANDROID_HOME=/home/jason/Android/Sdk
@@ -16,6 +17,7 @@ esac
 ## Android
 if [[ ! -z $ANDROID_HOME ]]; then
   export ANDROID_HOME
+  export ANDROID_SDK_ROOT
   export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 fi
 #

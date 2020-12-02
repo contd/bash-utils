@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # the essentials
+alias o="open"
 alias vi="vim"
 alias df="dfc"
 alias top="htop"
@@ -37,4 +38,6 @@ alias tunnel="ssh -f -N tunnel" # See ~/.ssh/config
 alias nets="lsof -Pni4 | grep LISTEN | grep"
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 # Misc
-alias address="echo 13021 Old Stagecoach Rd. Apt. 2511 Laurel, MD 20708"
+alias address="echo PO Box 33107 Cincinnati, OH 45233"
+alias vpnssh="ssh -i ~/.ssh/eu-north.pem ubuntu@ec2-13-49-18-255.eu-north-1.compute.amazonaws.com"
+alias sync_gdrive="rclone sync --progress --bwlimit=150k ~/Google\ Drive GoogleDrive:"
