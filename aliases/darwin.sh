@@ -8,7 +8,7 @@ source $HOME/.bash/aliases/develop.sh
 #alias mailsize='du -hs ~/Mail'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 alias aboutme="archey"
-alias supgrade="brew update && brew upgrade && brew cask upgrade && brew cleanup"
+alias supgrade="brew update && brew upgrade && brew cleanup"
 alias flush_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # Servers restart

@@ -19,14 +19,16 @@ __PWDLEN=$1
 # Method 1
 date +%s | sha256sum | base64 | head -c $__PWDLEN ; echo
 # Method 2
-< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
+#< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
 # Method 3
-openssl rand -base64 $__PWDLEN
+#openssl rand -base64 $__PWDLEN
 # Method 4
-tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1
+#tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1
 # Method 5
 # Method 6
 # Method 7
 # Method 8
 # Method 9
 # Method 10
+openssl rand -hex 32
+node -e "console.log(crypto.randomBytes(3.toString('hex'))"

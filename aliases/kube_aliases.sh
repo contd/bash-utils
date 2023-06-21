@@ -58,38 +58,40 @@ alias kprodeu="kubeprodeu && kubectl -n=apex-cloud-eu"
 # Create a local proxy to conenct to kubernetes web console for apex-cloud-eu #
 alias kproxyeu=KubeProxyEU
 
+alias k=kubectl
 
 ### Define Functions ###
 
 function KubeProxyEKSDEV()
 {
 	kubedev
-	kubectl -n default describe secret $(kubectl -n default get secret | grep eks-admin | awk '{print $1}')
+	#kubectl -n default describe secret $(kubectl -n default get secret | grep eks-admin | awk '{print $1}')
 	echo
-	echo "Full URL: http://localhost:8000/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview"
-	kubectl proxy --port=8000
+	echo "Full URL: http://localhost:8053/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview"
+	kubectl proxy --port=8053
 }
 
 function KubeProxyEKSUAT()
 {
 	kubeuat
-	kubectl -n default describe secret $(kubectl -n default get secret | grep eks-admin | awk '{print $1}')
+	#kubectl -n default describe secret $(kubectl -n default get secret | grep eks-admin | awk '{print $1}')
 	echo
-	echo "Full URL: http://localhost:8010/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=lj-uat"
-	kubectl proxy --port=8010
+	echo "Full URL: http://localhost:8052/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=lj-uat"
+	kubectl proxy --port=8052
 }
 
 function KubeProxy()
 {
 	kubeprod
-	kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+	#kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
 	kubectl proxy
 }
 
 function KubeProxyEU()
 {
 	kubeprodeu
-	kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+	#kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+	echo "Full URL: http://localhost:8051/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview"
 	kubectl proxy --port=8051
 }
 

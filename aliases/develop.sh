@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+# Python
+alias venv="python3 -m venv venv && . venv/bin/activate && pip install --upgrade pip setuptools"
 # Git Additions
 alias gco="git checkout"
 # Yarn
 alias yga="yarn global add --prefix ~/.local"
+# AWS
+alias get_aws="aws sts get-caller-identity | jq"
 # Atom tweaks
 #alias atom='tmpin atom'
 #alias gda='git diff | tmpin atom'

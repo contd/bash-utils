@@ -9,21 +9,21 @@ case "$myos" in
 		ANDROID_SDK_ROOT=$ANDROID_HOME
     ;;
   Linux)
-		ANDROID_HOME=/home/jason/Android/Sdk
+		ANDROID_HOME="$HOME/Android/Sdk"
     ;;
   *) ;;
 esac
 #
 ## Android
-if [[ ! -z $ANDROID_HOME ]]; then
+if [[ -d $ANDROID_HOME ]]; then
   export ANDROID_HOME
   export ANDROID_SDK_ROOT
-  export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+  export PATH=${PATH}:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 fi
 #
 ## AWS
-export AWS_PROFILE="default"  # aws default profile
-export ECS_PROFILE="default"  # ecs default profile
+#export AWS_PROFILE="default"  # aws default profile
+#export ECS_PROFILE="default"  # ecs default profile
 #
 ## Google Cloud SDK
 if [[ -d ~/google-cloud-sdk ]];then
@@ -34,14 +34,14 @@ fi
 
 #
 ## Qt (linux and macOS)
-if [[ -d $HOME/Qt ]];then
-	export QT_DIR=$HOME/Qt
-	export QT_VERSION=5.13.0
-	export QT_API=5.13.0
-	export CGO_CFLAGS_ALLOW=".*"
-	export CGO_CXXFLAGS_ALLOW=".*"
-	export CGO_LDFLAGS_ALLOW=".*"
-fi
+#if [[ -d $HOME/Qt ]];then
+#	export QT_DIR=$HOME/Qt
+#	export QT_VERSION=5.13.0
+#	export QT_API=5.13.0
+#	export CGO_CFLAGS_ALLOW=".*"
+#	export CGO_CXXFLAGS_ALLOW=".*"
+#	export CGO_LDFLAGS_ALLOW=".*"
+#fi
 
 ## Calibre Dev
 #if [[ ! -z "~/current-projects/calibre" ]]; then
@@ -62,5 +62,5 @@ fi
 #export ELECTRON_DBG_OPEN="chrome-cli open http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&port=5858 -n"
 #export ELECTRON_MAKE_PKG="asar pack @$ $1.asar"
 
-export QT_DIR=~/Qt
-export QT_VERSION=5.11.1
+#export QT_DIR=~/Qt
+#export QT_VERSION=5.11.1
